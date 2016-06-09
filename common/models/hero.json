@@ -1,0 +1,41 @@
+{
+  "name": "hero",
+  "plural": "heroes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "Hero's description"
+    },
+    "image": {
+      "type": "string",
+      "required": true,
+      "description": "Hero's image"
+    },
+    "marvel_id": {
+      "type": "number",
+      "required": true,
+      "description": "ID from the Marvel API"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "Hero's name"
+    },
+    "team_id": {
+      "type": "number",
+      "id": false,
+      "required": true,
+      "index": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

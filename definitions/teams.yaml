@@ -1,0 +1,608 @@
+paths:
+  /heroes:
+    post:
+      tags:
+        - hero
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: hero.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/hero'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/hero'
+      deprecated: false
+    put:
+      tags:
+        - hero
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: hero.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/hero'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/hero'
+      deprecated: false
+    get:
+      tags:
+        - hero
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: hero.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/hero'
+      deprecated: false
+  '/heroes/{id}/exists':
+    get:
+      tags:
+        - hero
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'hero.exists__get_heroes_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/heroes/{id}':
+    head:
+      tags:
+        - hero
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'hero.exists__head_heroes_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    get:
+      tags:
+        - hero
+      summary: Find a model instance by id from the data source.
+      operationId: hero.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/hero'
+      deprecated: false
+    delete:
+      tags:
+        - hero
+      summary: Delete a model instance by id from the data source.
+      operationId: hero.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - hero
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: hero.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/hero'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/hero'
+      deprecated: false
+  /heroes/findOne:
+    get:
+      tags:
+        - hero
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: hero.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/hero'
+      deprecated: false
+  /heroes/update:
+    post:
+      tags:
+        - hero
+      summary: Update instances of the model matched by where from the data source.
+      operationId: hero.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/hero'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /heroes/count:
+    get:
+      tags:
+        - hero
+      summary: Count instances of the model matched by where from the data source.
+      operationId: hero.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /heroes/change-stream:
+    post:
+      tags:
+        - hero
+      summary: Create a change stream.
+      operationId: hero.createChangeStream__post_heroes_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    get:
+      tags:
+        - hero
+      summary: Create a change stream.
+      operationId: hero.createChangeStream__get_heroes_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /teams:
+    post:
+      tags:
+        - team
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: team.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+    put:
+      tags:
+        - team
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: team.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+    get:
+      tags:
+        - team
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: team.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/team'
+      deprecated: false
+  '/teams/{id}/exists':
+    get:
+      tags:
+        - team
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'team.exists__get_teams_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  '/teams/{id}':
+    head:
+      tags:
+        - team
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'team.exists__head_teams_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    get:
+      tags:
+        - team
+      summary: Find a model instance by id from the data source.
+      operationId: team.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+    delete:
+      tags:
+        - team
+      summary: Delete a model instance by id from the data source.
+      operationId: team.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - team
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: team.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+  /teams/findOne:
+    get:
+      tags:
+        - team
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: team.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/team'
+      deprecated: false
+  /teams/update:
+    post:
+      tags:
+        - team
+      summary: Update instances of the model matched by where from the data source.
+      operationId: team.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/team'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /teams/count:
+    get:
+      tags:
+        - team
+      summary: Count instances of the model matched by where from the data source.
+      operationId: team.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /teams/change-stream:
+    post:
+      tags:
+        - team
+      summary: Create a change stream.
+      operationId: team.createChangeStream__post_teams_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    get:
+      tags:
+        - team
+      summary: Create a change stream.
+      operationId: team.createChangeStream__get_teams_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+definitions:
+  hero:
+    properties:
+      description:
+        description: "Hero's description"
+        type: string
+      image:
+        description: "Hero's image"
+        type: string
+      marvel_id:
+        description: ID from the Marvel API
+        type: number
+        format: double
+      name:
+        description: "Hero's name"
+        type: string
+      team_id:
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+    required:
+      - image
+      - marvel_id
+      - name
+      - team_id
+    additionalProperties: false
+  x-any:
+    properties: {}
+  team:
+    properties:
+      creator:
+        description: Person Who Created This Team
+        type: string
+      name:
+        description: Team Name
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - creator
+      - name
+    additionalProperties: false
+swagger: '2.0'
+info:
+  x-ibm-name: teams
+  version: 1.0.0
+  title: teams
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  gateway: datapower-gateway
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
